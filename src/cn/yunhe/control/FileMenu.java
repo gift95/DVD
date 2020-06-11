@@ -15,15 +15,11 @@ public class FileMenu {
     Scanner input = new Scanner(System.in);
     int choose = 0;
     File file = new File(fileWriteName + ".txt");
-
     public FileMenu() throws IOException {
         this.dvdList = readfile();
     }
-
-
     public List<DVD> readfile() throws IOException {
         // 使用文件名称创建流对象
-
         if (!file.exists()) {
             file.createNewFile();
             startMenu();
@@ -43,18 +39,14 @@ public class FileMenu {
                 dvd6.setNumber(Integer.parseInt(temp[3]));
                 dvdList.add(dvd6);
             }
-
             br.close();
             isr.close();
             fis.close();
-
-
         } catch (Exception exception) {
             System.out.println("出异常了");
         }
         return dvdList;
     }
-
     public void writeFile() {
         StringBuffer sbf = new StringBuffer();
         String[] temp = new String[dvdList.size()];
@@ -74,9 +66,7 @@ public class FileMenu {
             e.printStackTrace();
         }
     }
-
     public void startMenu() {
-
         System.out.print("欢 迎 使 用 迷 你 DVD 管 理 器\n" +
                 "-------------------------------------\n" +
                 "0. 借出排行榜\n" +
@@ -91,7 +81,6 @@ public class FileMenu {
         choose = input.nextInt();
         secondMenu();
     }
-
     public void secondMenu() {
         switch (choose) {
             case 0:
@@ -117,7 +106,6 @@ public class FileMenu {
                 break;
         }
     }
-
     public void topMenu() {
         isEnpty();
         //定义一个数组用来存放借出旳次数和索引
@@ -142,8 +130,6 @@ public class FileMenu {
                 list.add(shorta[i]);
             }
         }
-
-
         System.out.println("排名\t\t 名称\t\t 次数\t\t");
         for (int i = 0; i < list.size(); i++) {
             for (DVD d : dvdList) {
@@ -154,7 +140,6 @@ public class FileMenu {
         }
         back();
     }
-
     public void addMenu() {
         DVD dvd = new DVD();
         System.out.println("请输入DVD名称：");
@@ -175,7 +160,6 @@ public class FileMenu {
         dvdList.add(dvd);
         back();
     }
-
     public void seeMenu() {
         isEnpty();
         System.out.println("序号\t\t状 态\t\t名称\t\t借出日期");
@@ -194,12 +178,9 @@ public class FileMenu {
             } else {
                 System.out.print("--" + "\n");
             }
-
         }
         back();
-
     }
-
     public void delMenu() {
         isEnpty();
         System.out.println("请输入要删除旳DVD名称：");
@@ -225,8 +206,6 @@ public class FileMenu {
             back();
         }
     }
-
-
     public void borMenu() {
         isEnpty();
         System.out.println("请输入要借旳DVD名称：");
@@ -249,9 +228,7 @@ public class FileMenu {
         }
         System.out.println("未找到");
         back();
-
     }
-
     public void retMenu() {
         isEnpty();
         System.out.println("请输入要还旳DVD名称：");
@@ -273,8 +250,6 @@ public class FileMenu {
         System.out.println("未找到该DVD");
         back();
     }
-
-
     public Double rentClac(String time1, String time) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         double rent = 0;
@@ -285,7 +260,6 @@ public class FileMenu {
         }
         return rent;
     }
-
     public void back() {
         System.out.println("输入0返回");
         choose = input.nextInt();
@@ -293,7 +267,6 @@ public class FileMenu {
             startMenu();
         }
     }
-
     public void isEnpty() {
         if (dvdList.isEmpty()) {
             System.out.println("DVD列表为空，请添加后重试");
